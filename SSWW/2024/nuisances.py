@@ -62,23 +62,23 @@ print(treeBaseDir)
 # 2026: nessuna incertezza disponibile ancora
 
 
-# nuisances['lumi_1'] = {
-#     'name': 'lumi_1',
-#     'type': 'lnN',
-#     'samples': dict((skey, '1.0020') for skey in mc)
-# }
+nuisances['lumi_1'] = {
+    'name': 'lumi_1',
+    'type': 'lnN',
+    'samples': dict((skey, '1.0020') for skey in mc)
+}
 
-# nuisances['lumi_2'] = {
-#     'name': 'lumi_2',
-#     'type': 'lnN',
-#     'samples': dict((skey, '1.0068') for skey in mc)
-# }
+nuisances['lumi_2'] = {
+    'name': 'lumi_2',
+    'type': 'lnN',
+    'samples': dict((skey, '1.0068') for skey in mc)
+}
 
-# nuisances['lumi_3'] = {
-#     'name': 'lumi_3',
-#     'type': 'lnN',
-#     'samples': dict((skey, '1.0144') for skey in mc)
-# }
+nuisances['lumi_3'] = {
+    'name': 'lumi_3',
+    'type': 'lnN',
+    'samples': dict((skey, '1.0144') for skey in mc)
+}
 
 
 # nuisances['JER'] = {

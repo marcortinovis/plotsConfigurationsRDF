@@ -35,6 +35,8 @@ dataDirectory = os.path.join(treeBaseDir, dataReco, dataSteps)
 
 def nanoGetSampleFiles(path, name):
   _files = searchFiles.searchFiles(path, name, redirector=redirector)
+  if len(_files)==0:
+    print('zero files found!', path, name)
   return  {name : _files}
 
 
@@ -377,8 +379,8 @@ addSubSampleWeights(samples, 'WZSJJ_QCD', "WZJJ_Interference", "(Gen_ZGstar_mass
 files = nanoGetSampleFiles(mcDirectory, 'WWW') | \
         nanoGetSampleFiles(mcDirectory, 'WWZ') | \
         nanoGetSampleFiles(mcDirectory, 'WZZ') | \
-        nanoGetSampleFiles(mcDirectory, 'ZZZ') | \
-        nanoGetSampleFiles(mcDirectory, 'WZG')
+        nanoGetSampleFiles(mcDirectory, 'ZZZ') ### | \
+        # nanoGetSampleFiles(mcDirectory, 'WZG') ### mcortino: not found
 
 
 samples['VVV'] = {
@@ -407,9 +409,10 @@ samples['qqH_hww'] = {
     'MaxEventsPerJob': 1000000,
 }
 
-files = nanoGetSampleFiles(mcDirectory, 'VH-HToNon2B') | \
-        nanoGetSampleFiles(mcDirectory, 'ttHToNonbb_M125') | \
-        nanoGetSampleFiles(mcDirectory, 'GluGluHToZZTo4L_M125') | \
+
+### mcortino: nanoGetSampleFiles(mcDirectory, 'VH-HToNon2B') | \ not found
+### and nanoGetSampleFiles(mcDirectory, 'GluGluHToZZTo4L_M125') | \
+files = nanoGetSampleFiles(mcDirectory, 'ttHToNonbb_M125') | \
         nanoGetSampleFiles(mcDirectory, 'VBFHToTauTau_M125') | \
         nanoGetSampleFiles(mcDirectory, 'VBFHToZZTo4L_M125') | \
         nanoGetSampleFiles(mcDirectory, 'GluGluHToTauTau_M125')

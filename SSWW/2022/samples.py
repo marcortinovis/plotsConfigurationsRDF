@@ -35,6 +35,8 @@ dataDirectory = os.path.join(treeBaseDir, dataReco, dataSteps)
 
 def nanoGetSampleFiles(path, name):
   _files = searchFiles.searchFiles(path, name, redirector=redirector)
+  if len(_files)==0:
+    print('zero files found!', path, name)
   return  {name : _files}
 
 
@@ -256,7 +258,9 @@ samples['WW_DPS'] = {
 # DYGto2LG-1Jets_MLL-50_PTG-400to600_TuneCP5_13p6TeV_amcatnloFXFX-pythia8
 # DYGto2LG-1Jets_MLL-50_PTG-600_TuneCP5_13p6TeV_amcatnloFXFX-pythia8
 
-files = nanoGetSampleFiles(mcDirectory, 'DYGto2LG-1Jets_MLL-4to50_PTG-10to100') | \
+
+### mcortino: added _ext1 to 10to100
+files = nanoGetSampleFiles(mcDirectory, 'DYGto2LG-1Jets_MLL-4to50_PTG-10to100_ext1') | \
         nanoGetSampleFiles(mcDirectory, 'DYGto2LG-1Jets_MLL-4to50_PTG-100to200') | \
         nanoGetSampleFiles(mcDirectory, 'DYGto2LG-1Jets_MLL-4to50_PTG-200') | \
         nanoGetSampleFiles(mcDirectory, 'DYGto2LG-1Jets_MLL-50_PTG-10to100') | \
@@ -293,7 +297,8 @@ samples['Wg'] = {
 # DYGto2LG-1Jets_MLL-50_PTG-400to600_TuneCP5_13p6TeV_amcatnloFXFX-pythia8
 # DYGto2LG-1Jets_MLL-50_PTG-600_TuneCP5_13p6TeV_amcatnloFXFX-pythia8
 
-files = nanoGetSampleFiles(mcDirectory, 'DYGto2LG-1Jets_MLL-4to50_PTG-10to100') | \
+### mcortino: added _ext1 to 10to100
+files = nanoGetSampleFiles(mcDirectory, 'DYGto2LG-1Jets_MLL-4to50_PTG-10to100_ext1') | \
         nanoGetSampleFiles(mcDirectory, 'DYGto2LG-1Jets_MLL-4to50_PTG-100to200') | \
         nanoGetSampleFiles(mcDirectory, 'DYGto2LG-1Jets_MLL-4to50_PTG-200') | \
         nanoGetSampleFiles(mcDirectory, 'DYGto2LG-1Jets_MLL-50_PTG-10to100') | \
@@ -308,7 +313,8 @@ samples['ZgS'] = {
     'MaxEventsPerJob': 1000000,
 }
 
-addSubSampleWeights(samples, 'ZgS', "DYGto2LG-1Jets_MLL-4to50_PTG-10to100", "(Gen_ZGstar_mass > 0 && Gen_ZGstar_mass <= 4)")
+### mcortino: added _ext1 to 10to100
+addSubSampleWeights(samples, 'ZgS', "DYGto2LG-1Jets_MLL-4to50_PTG-10to100_ext1", "(Gen_ZGstar_mass > 0 && Gen_ZGstar_mass <= 4)")
 addSubSampleWeights(samples, 'ZgS', "DYGto2LG-1Jets_MLL-4to50_PTG-100to200", "(Gen_ZGstar_mass > 0 && Gen_ZGstar_mass <= 4)")
 addSubSampleWeights(samples, 'ZgS', "DYGto2LG-1Jets_MLL-4to50_PTG-200", "(Gen_ZGstar_mass > 0 && Gen_ZGstar_mass <= 4)")
 addSubSampleWeights(samples, 'ZgS', "DYGto2LG-1Jets_MLL-50_PTG-10to100", "(Gen_ZGstar_mass > 0 && Gen_ZGstar_mass <= 4)")
@@ -373,8 +379,8 @@ addSubSampleWeights(samples, 'WZSJJ_QCD', "WZJJ_Interference", "(Gen_ZGstar_mass
 files = nanoGetSampleFiles(mcDirectory, 'WWW') | \
         nanoGetSampleFiles(mcDirectory, 'WWZ') | \
         nanoGetSampleFiles(mcDirectory, 'WZZ') | \
-        nanoGetSampleFiles(mcDirectory, 'ZZZ') | \
-        nanoGetSampleFiles(mcDirectory, 'WZG')
+        nanoGetSampleFiles(mcDirectory, 'ZZZ') ### | \
+        # nanoGetSampleFiles(mcDirectory, 'WZG') ### mcortino: WZG not found in the MC folder
 
 
 samples['VVV'] = {
@@ -403,9 +409,10 @@ samples['qqH_hww'] = {
     'MaxEventsPerJob': 1000000,
 }
 
-files = nanoGetSampleFiles(mcDirectory, 'VH-HToNon2B') | \
-        nanoGetSampleFiles(mcDirectory, 'ttHToNonbb_M125') | \
-        nanoGetSampleFiles(mcDirectory, 'GluGluHToZZTo4L_M125') | \
+
+### mcortino: removed nanoGetSampleFiles(mcDirectory, 'VH-HToNon2B') | \, not found
+        ### nanoGetSampleFiles(mcDirectory, 'GluGluHToZZTo4L_M125') | \ # not found
+files = nanoGetSampleFiles(mcDirectory, 'ttHToNonbb_M125') | \
         nanoGetSampleFiles(mcDirectory, 'VBFHToTauTau_M125') | \
         nanoGetSampleFiles(mcDirectory, 'VBFHToZZTo4L_M125') | \
         nanoGetSampleFiles(mcDirectory, 'GluGluHToTauTau_M125')
