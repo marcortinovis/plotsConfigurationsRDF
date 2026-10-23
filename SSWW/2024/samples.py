@@ -480,9 +480,10 @@ samples['qqH_hww'] = {
 
  ### mcortino file not found:nanoGetSampleFiles(mcDirectory, 'VH-HToNon2B') | \
         ### nanoGetSampleFiles(mcDirectory, 'GluGluHToZZTo4L_M125') | \ ### mcortino: not found
+        ####  | \ ### mcortino: creates issues with nuisances
 files = nanoGetSampleFiles(mcDirectory, 'ttHToNonbb_M125') | \
-        nanoGetSampleFiles(mcDirectory, 'VBFHToTauTau_M125') | \
         nanoGetSampleFiles(mcDirectory, 'VBFHToZZTo4L_M125') | \
+        nanoGetSampleFiles(mcDirectory, 'VBFHToTauTau_M125') | \
         nanoGetSampleFiles(mcDirectory, 'GluGluHToTauTau_M125')
 
 samples['higgs'] = {

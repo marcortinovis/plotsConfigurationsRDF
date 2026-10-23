@@ -8,9 +8,9 @@ structure['DY']  = {
 }
 
 structure['top'] = {
-    'isSignal' : 1,
+    'isSignal' : 0,
     'isData'   : 0,
-    'scaleSampleForDatacard' : 10 # scaling signal to have sensitivity
+    #'scaleSampleForDatacard' : 10 # scaling signal to have sensitivity
 }
 
 structure['tVx']  = {
@@ -130,12 +130,12 @@ structure['WW_EWK']  = {
 }
 
 structure['WW_QCD']  = {
-    'isSignal' : 1,
+    'isSignal' : 0,
     'isData'   : 0,
 }
 
 structure['WW_Int']  = {
-    'isSignal' : 1,
+    'isSignal' : 0,
     'isData'   : 0,
 }
 

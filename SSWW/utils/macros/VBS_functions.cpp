@@ -322,4 +322,158 @@ float mT2(
 }
 
 
+//
+// computeLeptonAngles -- the angular structure that survives the two neutrinos
+//
+// What the measurement is defined by is cos(theta*): the polar angle of the
+// charged lepton in its own W rest frame against the W flight direction,
+// (1 - cos^2 theta*) for a longitudinal W and (1 -+ cos theta*)^2 for a
+// transverse one. It is not reconstructable in this channel, and the reason
+// is a counting, not a resolution problem: two neutrinos are six unknowns,
+// MET gives two constraints and m(l nu) = m_W on each W gives two more, so
+// four constraints for six unknowns leave a two-parameter family and not a
+// discrete ambiguity. (Dileptonic ttbar looks like the same problem and is
+// solvable only because the two top-mass constraints bring the count to six.)
+//
+// Neither ATLAS nor CMS reconstructs it here. The ATLAS same-sign WW
+// polarisation analysis (arXiv:2503.11317) feeds its DNNs only transverse
+// and visible quantities -- transverse masses, dphi, deta, dR, dy and the
+// Zeppenfeld variables -- and no cos(theta*) at all. The variable list in
+// aliases.py follows theirs.
+//
+// What this adds on top of that list is the angular structure of the
+// dilepton system, which is well defined without any neutrino:
+//
+//   [0] cosThetaCS   Collins-Soper polar angle of the pair. The CS axis
+//                    bisects the two beam directions in the pair rest frame,
+//                    which is what makes it insensitive to the unknown
+//                    longitudinal boost. Closed form in lab quantities.
+//   [1] cosThetaHel  cos of the angle between the LEADING lepton and the
+//                    pair flight direction, in the pair rest frame.
+//
+// Both are ONE number for the pair, not one per lepton. In the rest frame of
+// (l1 + l2) the two momenta are exactly back to back, so the subleading
+// lepton gives exactly minus the leading one for either definition: a second
+// branch would be -1 times the first and carry no information. Which lepton
+// is "leading" is a pT ordering and therefore arbitrary with respect to the
+// physics, so the sign of these two is meaningful only together with
+// dnn_ptAsymll; if an unordered variable is wanted, take |cos|.
+//
+// Returns -9999 unless there are exactly two leptons, as every other
+// function in this file does.
+//
+ROOT::RVec<float> computeLeptonAngles(
+    const ROOT::RVec<float>& pt,
+    const ROOT::RVec<float>& eta,
+    const ROOT::RVec<float>& phi,
+    const ROOT::RVec<int>&   pdgId
+) {
+    if ((int)pt.size() != 2) return {-9999.f, -9999.f};
+
+    TLorentzVector l1, l2;
+    l1.SetPtEtaPhiM(pt[0], eta[0], phi[0], lepton_mass(pdgId[0]));
+    l2.SetPtEtaPhiM(pt[1], eta[1], phi[1], lepton_mass(pdgId[1]));
+    TLorentzVector ll = l1 + l2;
+
+    const double m  = ll.M();
+    const double qT = ll.Pt();
+    if (m <= 0.) return {-9999.f, -9999.f};
+
+    // ---- Collins-Soper, closed form in lab quantities
+    const double r2  = std::sqrt(2.);
+    const double P1p = (l1.E() + l1.Pz()) / r2;
+    const double P1m = (l1.E() - l1.Pz()) / r2;
+    const double P2p = (l2.E() + l2.Pz()) / r2;
+    const double P2m = (l2.E() - l2.Pz()) / r2;
+
+    double cosCS = 2. * (P1p * P2m - P1m * P2p) / (m * std::sqrt(m * m + qT * qT));
+    // the CS z axis is oriented along the pair's own longitudinal motion
+    if (ll.Pz() < 0.) cosCS = -cosCS;
+
+    // ---- helicity angle of the pair
+    double cosHel = -9999.;
+    if (ll.Vect().Mag() > 0.) {
+        TLorentzVector l1s = l1;
+        l1s.Boost(-ll.BoostVector());
+        if (l1s.Vect().Mag() > 0.)
+            cosHel = l1s.Vect().Unit().Dot(ll.Vect().Unit());
+    }
+
+    return {(float)cosCS, (float)cosHel};
+}
+
+
+//
+// deltaYjj -- RAPIDITY gap of the two tagging jets
+//
+// Not the same as detajj. The analysis regions cut on the pseudorapidity gap
+// and that stays as it is, but the ATLAS polarisation DNN
+// (arXiv:2503.11317, Table 2) uses the rapidity difference, and for a
+// massive jet the two differ. Rapidity is also the quantity that is additive
+// under a longitudinal boost, which is what a Zeppenfeld-like variable is
+// really about.
+//
+// Takes the jet masses already gathered through CleanJet_jetIdx, so this
+// function never sees the ULong64_t index type.
+//
+float deltaYjj(
+    const ROOT::RVec<float>& jet_pt,
+    const ROOT::RVec<float>& jet_eta,
+    const ROOT::RVec<float>& jet_mass
+) {
+    if ((int)jet_pt.size() < 2) return -1.f;
+
+    auto rapidity = [](float pt, float eta, float mass) -> double {
+        const double pz = pt * std::sinh(eta);
+        const double e  = std::sqrt(pt * pt * std::cosh(eta) * std::cosh(eta)
+                                    + (double)mass * mass);
+        if (e <= std::abs(pz)) return (double)eta;   // degenerate, fall back
+        return 0.5 * std::log((e + pz) / (e - pz));
+    };
+
+    const double y1 = rapidity(jet_pt[0], jet_eta[0], jet_mass.size() > 0 ? jet_mass[0] : 0.f);
+    const double y2 = rapidity(jet_pt[1], jet_eta[1], jet_mass.size() > 1 ? jet_mass[1] : 0.f);
+    return (float)std::abs(y1 - y2);
+}
+
+
+//
+// minDeltaRLepJet
+// Smallest DeltaR between any selected lepton and any jet above 30 GeV.
+// Returns -1 when either collection is empty after the pt cut.
+//
+// Written as an explicit double loop rather than as an RVec expression on
+// purpose: ROOT::VecOps::DeltaR is ELEMENT-WISE and throws
+// "Cannot call operator - on vectors of different sizes" the moment the two
+// collections have different lengths, which for leptons against jets is
+// almost always. The pt threshold is a constructor-style constant and so
+// cannot be a column, hence it lives here (CLAUDE.md section 7, constraint 1).
+//
+float minDeltaRLepJet(
+    const ROOT::RVec<float>& lep_eta,
+    const ROOT::RVec<float>& lep_phi,
+    const ROOT::RVec<float>& jet_pt,
+    const ROOT::RVec<float>& jet_eta,
+    const ROOT::RVec<float>& jet_phi
+) {
+    const float jetPtMin = 30.f;
+    const int nL = (int)std::min(lep_eta.size(), lep_phi.size());
+    const int nJ = (int)std::min(jet_pt.size(), std::min(jet_eta.size(), jet_phi.size()));
+
+    float best = std::numeric_limits<float>::max();
+    for (int iL = 0; iL < nL; ++iL) {
+        for (int iJ = 0; iJ < nJ; ++iJ) {
+            if (jet_pt[iJ] <= jetPtMin) continue;
+            const float deta = lep_eta[iL] - jet_eta[iJ];
+            float dphi = lep_phi[iL] - jet_phi[iJ];
+            while (dphi >  M_PI) dphi -= 2*M_PI;
+            while (dphi < -M_PI) dphi += 2*M_PI;
+            const float dr = std::sqrt(deta*deta + dphi*dphi);
+            if (dr < best) best = dr;
+        }
+    }
+    return (best == std::numeric_limits<float>::max()) ? -1.f : best;
+}
+
+
 #endif // VBS_FUNCTIONS_H
