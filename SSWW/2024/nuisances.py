@@ -37,18 +37,18 @@ fakeDirectoryMuonEG = os.path.join(treeBaseDir, dataRecoMuonEG, fakeSteps)
 dataDirectoryMuonEG = os.path.join(treeBaseDir, dataRecoMuonEG, dataSteps)
 print(treeBaseDir)
 
-# # merge cuts
-# _mergedCuts = []
-# for cut in list(cuts.keys()):
-#     __cutExpr = ''
-#     if type(cuts[cut]) == dict:
-#         __cutExpr = cuts[cut]['expr']
-#         for cat in list(cuts[cut]['categories'].keys()):
-#             _mergedCuts.append(cut + '_' + cat)
-#     elif type(cuts[cut]) == str:
-#         _mergedCuts.append(cut)
+# merge cuts
+_mergedCuts = []
+for cut in list(cuts.keys()):
+    __cutExpr = ''
+    if type(cuts[cut]) == dict:
+        __cutExpr = cuts[cut]['expr']
+        for cat in list(cuts[cut].get('categories', {}).keys()):
+            _mergedCuts.append(cut + '_' + cat)
+    elif type(cuts[cut]) == str:
+        _mergedCuts.append(cut)
 
-# cuts2j = _mergedCuts
+cuts2j = _mergedCuts
 
 # nuisances = {}
 
@@ -209,7 +209,7 @@ for flavour in ['bc', 'light']:
 #     }
 
 
-#### Standard B-tagger
+# ### Standard B-tagger
 
 # for shift in ['jes', 'lf', 'hf', 'hfstats1', 'hfstats2', 'lfstats1', 'lfstats2', 'cferr1', 'cferr2']:
 #    btag_syst = ['(btagSF%sup)/(btagSF)' % shift, '(btagSF%sdown)/(btagSF)' % shift]
@@ -299,8 +299,7 @@ _qcdScaleGroups = {
     # polarised ones are its decomposition), so one correlated parameter.
     # the inclusive VBS_SSWW is commented out in samples.py (it double counts
     # WW_EWK + WW_QCD + WW_Int); add it back here if it is ever re-enabled.
-    'QCDscale_VBS_SSWW' : ['VBS_SSWW', 'WW_EWK',
-                           'VBS_SSWW_WWCM_LL', 'VBS_SSWW_WWCM_TL', 'VBS_SSWW_WWCM_TT'],
+    'QCDscale_VBS_SSWW' : ['WW_EWK'], #'VBS_SSWW', 'VBS_SSWW_WWCM_LL', 'VBS_SSWW_WWCM_TL', 'VBS_SSWW_WWCM_TT'],
     'QCDscale_SSWW_QCD' : ['WW_QCD', 'WW_Int'],
 
     # --- WZ, split EWK / QCD exactly as groupPlot does in plot.py
@@ -407,57 +406,57 @@ nuisances['fake_mu_stat'] = {
     }
 }
 
-# autoStats = True
-# if autoStats:
-#     ## Use the following if you want to apply the automatic combine MC stat nuisances.
-#     nuisances['stat'] = {
-#         'type': 'auto',
-#         'maxPoiss': '10',
-#         'includeSignal': '0',
-#         #  nuisance ['maxPoiss'] =  Number of threshold events for Poisson modelling
-#         #  nuisance ['includeSignal'] =  Include MC stat nuisances on signal processes (1=True, 0=False)
-#         'samples': {}
-#     }
+autoStats = True
+if autoStats:
+    ## Use the following if you want to apply the automatic combine MC stat nuisances.
+    nuisances['stat'] = {
+        'type': 'auto',
+        'maxPoiss': '10',
+        'includeSignal': '0',
+        #  nuisance ['maxPoiss'] =  Number of threshold events for Poisson modelling
+        #  nuisance ['includeSignal'] =  Include MC stat nuisances on signal processes (1=True, 0=False)
+        'samples': {}
+    }
 
-# nuisances['DYttnorm2j']  = {
-#                'name'  : 'CMS_hww_DYttnorm2j',
-#                'skipCMS' : 1,
-#                'samples'  : {
-#                    'DY' : '1.00',
-#                    },
-#                'type'  : 'rateParam',
-#                'cuts'  : cuts2j
-#               }
-# '''
-# nuisances['WWnorm2j']  = {
-#                'name'  : 'CMS_hww_WWnorm2j',
-#                'skipCMS' : 1,
-#                'samples'  : {
-#                    'WWjj_QCD' : '1.00',
-#                    },
-#                'type'  : 'rateParam',
-#                'cuts'  : cuts2j
-#               }
-# '''
-# nuisances['ggWWnorm2j']  = {
-#                'name'  : 'CMS_hww_WWnorm2j',
-#                'skipCMS' : 1,
-#                'samples'  : {
-#                    'ggWW' : '1.00',
-#                    },
-#                'type'  : 'rateParam',
-#                'cuts'  : cuts2j
-#               }
+nuisances['DYttnorm2j']  = {
+               'name'  : 'CMS_hww_DYttnorm2j',
+               'skipCMS' : 1,
+               'samples'  : {
+                   'DY' : '1.00',
+                   },
+               'type'  : 'rateParam',
+               'cuts'  : cuts2j
+              }
 
-# nuisances['Topnorm2j']  = {
-#                'name'  : 'CMS_hww_Topnorm2j',
-#                'skipCMS' : 1,
-#                'samples'  : {
-#                    'top' : '1.00',
-#                    },
-#                'type'  : 'rateParam',
-#                'cuts'  : cuts2j
-#               }
+nuisances['WWnorm2j']  = {
+               'name'  : 'CMS_hww_WWnorm2j',
+               'skipCMS' : 1,
+               'samples'  : {
+                   'WW_QCD' : '1.00', # 'WWjj_QCD' was 'WW_QCD', is it right?
+                   },
+               'type'  : 'rateParam',
+               'cuts'  : cuts2j
+              }
+
+nuisances['ggWWnorm2j']  = {
+               'name'  : 'CMS_hww_WWnorm2j',
+               'skipCMS' : 1,
+               'samples'  : {
+                   'ggWW' : '1.00',
+                   },
+               'type'  : 'rateParam',
+               'cuts'  : cuts2j
+              }
+
+nuisances['Topnorm2j']  = {
+               'name'  : 'CMS_hww_Topnorm2j',
+               'skipCMS' : 1,
+               'samples'  : {
+                   'top' : '1.00',
+                   },
+               'type'  : 'rateParam',
+               'cuts'  : cuts2j
+              }
 
 
 nuisances['QCDscale_CRSR_accept_dytt']  = {

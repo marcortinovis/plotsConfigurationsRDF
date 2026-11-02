@@ -1,0 +1,9 @@
+
+initialdir            = /afs/cern.ch/user/m/mcortino/private/ANALYSIS/plotsConfigurationsRDF/SSWW/2023
+executable            = parallel_compile/my_script_compile_WW_QCD.sh
+error                 = /dev/null
+log                   = /dev/null
+getenv                = True
++JobFlavour           = "longlunch"
+request_memory        = 3000
+queue

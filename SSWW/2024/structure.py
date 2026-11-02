@@ -104,25 +104,25 @@ structure['OSWW']  = {
 }
 
 # Signals
-structure['VBS_SSWW']  = {
-    'isSignal' : 1,
-    'isData'   : 0,
-}
+# structure['VBS_SSWW']  = {
+#     'isSignal' : 1,
+#     'isData'   : 0,
+# }
 
-structure['VBS_SSWW_WWCM_LL']  = {
-    'isSignal' : 1,
-    'isData'   : 0,
-}
+# structure['VBS_SSWW_WWCM_LL']  = {
+#     'isSignal' : 1,
+#     'isData'   : 0,
+# }
 
-structure['VBS_SSWW_WWCM_TL']  = {
-    'isSignal' : 1,
-    'isData'   : 0,
-}
+# structure['VBS_SSWW_WWCM_TL']  = {
+#     'isSignal' : 1,
+#     'isData'   : 0,
+# }
 
-structure['VBS_SSWW_WWCM_TT']  = {
-    'isSignal' : 1,
-    'isData'   : 0,
-}
+# structure['VBS_SSWW_WWCM_TT']  = {
+#     'isSignal' : 1,
+#     'isData'   : 0,
+# }
 
 structure['WW_EWK']  = {
     'isSignal' : 1,

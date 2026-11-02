@@ -511,46 +511,46 @@ samples['OSWW'] = {
 #############    SIGNALS  #################
 ###########################################
 
-#   WpWpJJ_EWK-QCD_TuneCP5_13p6TeV_madgraph-pythia8
-files = nanoGetSampleFiles(mcDirectory, 'VBS_SSWW')
-samples['VBS_SSWW'] = {
-    'name': files,
-    'weight': mcCommonWeight,
-    'MaxEventsPerJob': 2000000,
-#    'splitParts': 10,
-#    'useParts'  : [0, 1, 2, 3],
-}
+# #   WpWpJJ_EWK-QCD_TuneCP5_13p6TeV_madgraph-pythia8
+# files = nanoGetSampleFiles(mcDirectory, 'VBS_SSWW')
+# samples['VBS_SSWW'] = {
+#     'name': files,
+#     'weight': mcCommonWeight,
+#     'MaxEventsPerJob': 2000000,
+# #    'splitParts': 10,
+# #    'useParts'  : [0, 1, 2, 3],
+# }
 
 
-# VBS-SSWW_PolarizationLL_TuneCP5_13p6TeV_madgraph-pythia8
-files = nanoGetSampleFiles(mcDirectory, 'VBS_SSWW_WWCM_LL')
-samples['VBS_SSWW_WWCM_LL'] = {
-    'name': files,
-    'weight': mcCommonWeight,
-    'MaxEventsPerJob': 2000000,
-#    'splitParts': 10,
-#    'useParts'  : [0, 1, 2, 3],
-}
+# # VBS-SSWW_PolarizationLL_TuneCP5_13p6TeV_madgraph-pythia8
+# files = nanoGetSampleFiles(mcDirectory, 'VBS_SSWW_WWCM_LL')
+# samples['VBS_SSWW_WWCM_LL'] = {
+#     'name': files,
+#     'weight': mcCommonWeight,
+#     'MaxEventsPerJob': 2000000,
+# #    'splitParts': 10,
+# #    'useParts'  : [0, 1, 2, 3],
+# }
 
-# VBS-SSWW_PolarizationTL_TuneCP5_13p6TeV_madgraph-pythia8
-files = nanoGetSampleFiles(mcDirectory, 'VBS_SSWW_WWCM_TL')
-samples['VBS_SSWW_WWCM_TL'] = {
-    'name': files,
-    'weight': mcCommonWeight,
-    'MaxEventsPerJob': 2000000,
-#    'splitParts': 10,
-#    'useParts'  : [0, 1, 2, 3],
-}
+# # VBS-SSWW_PolarizationTL_TuneCP5_13p6TeV_madgraph-pythia8
+# files = nanoGetSampleFiles(mcDirectory, 'VBS_SSWW_WWCM_TL')
+# samples['VBS_SSWW_WWCM_TL'] = {
+#     'name': files,
+#     'weight': mcCommonWeight,
+#     'MaxEventsPerJob': 2000000,
+# #    'splitParts': 10,
+# #    'useParts'  : [0, 1, 2, 3],
+# }
 
-# VBS-SSWW_PolarizationTT_TuneCP5_13p6TeV_madgraph-pythia8
-files = nanoGetSampleFiles(mcDirectory, 'VBS_SSWW_WWCM_TT')
-samples['VBS_SSWW_WWCM_TT'] = {
-    'name': files,
-    'weight': mcCommonWeight,
-    'MaxEventsPerJob': 2000000,
-#    'splitParts': 10,
-#    'useParts'  : [0, 1, 2, 3],
-}
+# # VBS-SSWW_PolarizationTT_TuneCP5_13p6TeV_madgraph-pythia8
+# files = nanoGetSampleFiles(mcDirectory, 'VBS_SSWW_WWCM_TT')
+# samples['VBS_SSWW_WWCM_TT'] = {
+#     'name': files,
+#     'weight': mcCommonWeight,
+#     'MaxEventsPerJob': 2000000,
+# #    'splitParts': 10,
+# #    'useParts'  : [0, 1, 2, 3],
+# }
 
 # WWto2L2Nu-2Jets_SS_noTop_EW_TuneCP5_13p6TeV_madgraph-pythia8
 files = nanoGetSampleFiles(mcDirectory, 'WpWpJJ_EWK_noTop')

@@ -8,9 +8,9 @@ structure['DY']  = {
 }
 
 structure['top'] = {
-    'isSignal' : 1,
+    'isSignal' : 0,
     'isData'   : 0,
-    'scaleSampleForDatacard' : 10 # scaling signal to have sensitivity
+    #'scaleSampleForDatacard' : 10 # scaling signal to have sensitivity
 }
 
 structure['tVx']  = {
@@ -104,25 +104,25 @@ structure['OSWW']  = {
 }
 
 # Signals
-structure['VBS_SSWW']  = {
-    'isSignal' : 1,
-    'isData'   : 0,
-}
+# structure['VBS_SSWW']  = {
+#     'isSignal' : 1,
+#     'isData'   : 0,
+# }
 
-structure['VBS_SSWW_WWCM_LL']  = {
-    'isSignal' : 1,
-    'isData'   : 0,
-}
+# structure['VBS_SSWW_WWCM_LL']  = {
+#     'isSignal' : 1,
+#     'isData'   : 0,
+# }
 
-structure['VBS_SSWW_WWCM_TL']  = {
-    'isSignal' : 1,
-    'isData'   : 0,
-}
+# structure['VBS_SSWW_WWCM_TL']  = {
+#     'isSignal' : 1,
+#     'isData'   : 0,
+# }
 
-structure['VBS_SSWW_WWCM_TT']  = {
-    'isSignal' : 1,
-    'isData'   : 0,
-}
+# structure['VBS_SSWW_WWCM_TT']  = {
+#     'isSignal' : 1,
+#     'isData'   : 0,
+# }
 
 structure['WW_EWK']  = {
     'isSignal' : 1,
@@ -130,12 +130,12 @@ structure['WW_EWK']  = {
 }
 
 structure['WW_QCD']  = {
-    'isSignal' : 1,
+    'isSignal' : 0,
     'isData'   : 0,
 }
 
 structure['WW_Int']  = {
-    'isSignal' : 1,
+    'isSignal' : 0,
     'isData'   : 0,
 }
 

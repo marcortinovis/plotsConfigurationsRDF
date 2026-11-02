@@ -99,11 +99,11 @@ cuts['WW_SR'] = {
         ' && mjj > 500'
         ' && detajj > 2.5'
     ),
-    # 'categories': {
-    #     'ee'   : 'ee && !(abs(mll - 91.2) < 15)',
-    #     'mumu' : 'mumu',
-    #     'emu'  : 'emu',
-    # }
+    'categories': {
+        'ee'   : 'ee && !(abs(mll - 91.2) < 15)',
+        'mumu' : 'mumu',
+        'emu'  : 'emu',
+    }
 }
 
 # ------------------------------------------------
@@ -125,12 +125,12 @@ cuts['WZ_SR'] = {
         ' && detajj > 2.5'
         ' && (eee || eem || mme || mmm)'
     ),
-    # 'categories': {
-    #     'eee' : 'eee',
-    #     'eem' : 'eem',
-    #     'mme' : 'mme',
-    #     'mmm' : 'mmm',
-    # }
+    'categories': {
+        'eee' : 'eee',
+        'eem' : 'eem',
+        'mme' : 'mme',
+        'mmm' : 'mmm',
+    }
 }
 
 # ------------------------------------------------
@@ -148,11 +148,11 @@ cuts['nonprompt_CR'] = {
         ' && mjj > 500'
         ' && detajj > 2.5'
     ),
-    # 'categories': {
-    #     'ee'   : 'ee && !(abs(mll - 91.2) < 15)',
-    #     'mumu' : 'mumu',
-    #     'emu'  : 'emu',
-    # }
+    'categories': {
+        'ee'   : 'ee && !(abs(mll - 91.2) < 15)',
+        'mumu' : 'mumu',
+        'emu'  : 'emu',
+    }
 }
 
 # ------------------------------------------------
@@ -173,12 +173,12 @@ cuts['WZb_CR'] = {
         ' && detajj > 2.5'
         ' && (eee || eem || mme || mmm)'
     ),
-    # 'categories': {
-    #     'eee' : 'eee',
-    #     'eem' : 'eem',
-    #     'mme' : 'mme',
-    #     'mmm' : 'mmm',
-    # }
+    'categories': {
+        'eee' : 'eee',
+        'eem' : 'eem',
+        'mme' : 'mme',
+        'mmm' : 'mmm',
+    }
 }
 
 # ------------------------------------------------
@@ -195,11 +195,11 @@ cuts['WW_VR_bveto'] = {
         ' && zstar_max < 0.75'
         ' && mjj > 200 && mjj < 500'
     ),
-    # 'categories': {
-    #     'ee'   : 'ee && !(abs(mll - 91.2) < 15)',
-    #     'mumu' : 'mumu',
-    #     'emu'  : 'emu',
-    # }
+    'categories': {
+        'ee'   : 'ee && !(abs(mll - 91.2) < 15)',
+        'mumu' : 'mumu',
+        'emu'  : 'emu',
+    }
 }
 
 cuts['WW_VR_btag'] = {
@@ -213,11 +213,11 @@ cuts['WW_VR_btag'] = {
         ' && zstar_max < 0.75'
         ' && mjj > 200 && mjj < 500'
     ),
-    # 'categories': {
-    #     'ee'   : 'ee && !(abs(mll - 91.2) < 15)',
-    #     'mumu' : 'mumu',
-    #     'emu'  : 'emu',
-    # }
+    'categories': {
+        'ee'   : 'ee && !(abs(mll - 91.2) < 15)',
+        'mumu' : 'mumu',
+        'emu'  : 'emu',
+    }
 }
 
 # ------------------------------------------------
@@ -237,12 +237,12 @@ cuts['WZ_VR_bveto'] = {
         ' && mjj > 200 && mjj < 500'
         ' && (eee || eem || mme || mmm)'
     ),
-    # 'categories': {
-    #     'eee' : 'eee',
-    #     'eem' : 'eem',
-    #     'mme' : 'mme',
-    #     'mmm' : 'mmm',
-    # }
+    'categories': {
+        'eee' : 'eee',
+        'eem' : 'eem',
+        'mme' : 'mme',
+        'mmm' : 'mmm',
+    }
 }
 
 cuts['WZ_VR_btag'] = {
@@ -259,12 +259,12 @@ cuts['WZ_VR_btag'] = {
         ' && mjj > 200 && mjj < 500'
         ' && (eee || eem || mme || mmm)'
     ),
-    # 'categories': {
-    #     'eee' : 'eee',
-    #     'eem' : 'eem',
-    #     'mme' : 'mme',
-    #     'mmm' : 'mmm',
-    # }
+    'categories': {
+        'eee' : 'eee',
+        'eem' : 'eem',
+        'mme' : 'mme',
+        'mmm' : 'mmm',
+    }
 }
 
 # ------------------------------------------------
@@ -286,9 +286,9 @@ cuts['ZZ_VR'] = {
         ' && zstar_max < 0.75'
         ' && (eeee || eemm || mmmm)'
     ),
-    # 'categories': {
-    #     'eeee' : 'eeee',
-    #     'eemm' : 'eemm',
-    #     'mmmm' : 'mmmm',
-    # }
+    'categories': {
+        'eeee' : 'eeee',
+        'eemm' : 'eemm',
+        'mmmm' : 'mmmm',
+    }
 }

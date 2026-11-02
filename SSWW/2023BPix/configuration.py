@@ -1,7 +1,7 @@
 # example of configuration file
 
 tag = 'SSWW'
-tagger = '261012_23Bpix'
+tagger = '261026_1030'
 
 # used by mkShape to define output directory for root files
 outputDir = 'rootFile/' + tagger

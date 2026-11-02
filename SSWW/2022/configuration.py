@@ -1,7 +1,7 @@
 # example of configuration file
 
 tag = 'SSWW'
-tagger = '261012_22'
+tagger = '261026_1030'
 
 # used by mkShape to define output directory for root files
 outputDir = 'rootFile/' + tagger
@@ -42,3 +42,13 @@ outputDirDatacard = 'datacards/' + tagger
 
 scripts_run_folder    = "${MY_PATH_JOBS}/2022/"+tag+"_"+tagger+"/run_scripts"
 script_batch_location = "${MY_PATH_JOBS}/2022/"+tag+"_"+tagger+"/batch_scripts"
+
+
+
+jobs_config = {
+    'haddBatch':
+        {
+            'jobFlavour': 'tomorrow',
+            'request_memory': '48128'
+        },
+}

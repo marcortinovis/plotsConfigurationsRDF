@@ -1,7 +1,7 @@
 
 # tag: used to define root file name and more
 tag = 'SSWW'
-tagger = '261012_Run3'
+tagger = '261026_1030'
 tag = tag + "_" + tagger
 
 # File with dict of variables
@@ -30,37 +30,37 @@ foldersToMerge = {
 
                   "2022" : {
                     "folder" : "../2022",
-                    "tag"    : "261012_22",
+                    "tag"    : "261026_1030",
                   },
 
                   "2022EE" : {
                     "folder" : "../2022EE",
-                    "tag"    : "261012_22EE",
+                    "tag"    : "261026_1030",
                   },
 
                   "2023" : {
                     "folder" : "../2023",
-                    "tag"    : "261012_23",
+                    "tag"    : "261026_1030",
                   },
 
                   "2023BPix" : {
                     "folder" : "../2023BPix",
-                    "tag"    : "261012_23Bpix",
+                    "tag"    : "261026_1030",
                   },
 
                   "2024" : {
                     "folder" : "../2024",
-                    "tag"    : "261012_24",
+                    "tag"    : "261026_1030",
                    },
 
                   "2025" : {
                     'folder' : '../2025',
-                    'tag'    : '261012_25',
+                    'tag'    : '261026_1030',
                   },
 
                   "2026" : {
                     'folder' : '../2026',
-                    'tag'    : '261012_26',
+                    'tag'    : '261026_1030',
                   }
 }
 
