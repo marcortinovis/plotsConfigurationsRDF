@@ -5,6 +5,7 @@ output                  = /afs/cern.ch/user/m/mcortino/private/ANALYSIS/plotsCon
 error                   = /afs/cern.ch/user/m/mcortino/private/ANALYSIS/plotsConfigurationsRDF/SSWW/Run3/jobsMerge/merge_$(cutname).err
 log                     = /afs/cern.ch/user/m/mcortino/private/ANALYSIS/plotsConfigurationsRDF/SSWW/Run3/jobsMerge/merge_$(cutname).log
 getenv                  = True
+transfer_input_files    = /afs/cern.ch/user/m/mcortino/private/ANALYSIS/plotsConfigurationsRDF/SSWW/Run3/jobsMerge/krb5cc_staged
 +JobFlavour             = "tomorrow"
 
 queue cutname in (
@@ -12,40 +13,4 @@ queue cutname in (
   WW_SR_ee
   WW_SR_mumu
   WW_SR_emu
-  WZ_SR
-  WZ_SR_eee
-  WZ_SR_eem
-  WZ_SR_mme
-  WZ_SR_mmm
-  nonprompt_CR
-  nonprompt_CR_ee
-  nonprompt_CR_mumu
-  nonprompt_CR_emu
-  WZb_CR
-  WZb_CR_eee
-  WZb_CR_eem
-  WZb_CR_mme
-  WZb_CR_mmm
-  WW_VR_bveto
-  WW_VR_bveto_ee
-  WW_VR_bveto_mumu
-  WW_VR_bveto_emu
-  WW_VR_btag
-  WW_VR_btag_ee
-  WW_VR_btag_mumu
-  WW_VR_btag_emu
-  WZ_VR_bveto
-  WZ_VR_bveto_eee
-  WZ_VR_bveto_eem
-  WZ_VR_bveto_mme
-  WZ_VR_bveto_mmm
-  WZ_VR_btag
-  WZ_VR_btag_eee
-  WZ_VR_btag_eem
-  WZ_VR_btag_mme
-  WZ_VR_btag_mmm
-  ZZ_VR
-  ZZ_VR_eeee
-  ZZ_VR_eemm
-  ZZ_VR_mmmm
 )

@@ -1,0 +1,31 @@
+merge job for cut nonprompt_CR_ee started at Fri Nov  6 02:23:18 PM CET 2026 on b9g12p3201.cern.ch
+Ticket cache: FILE:/pool/condor/dir_22222/krb5cc_staged
+Default principal: mcortino@CERN.CH
+
+Valid starting       Expires              Service principal
+11/06/2026 14:20:00  11/07/2026 15:20:00  krbtgt/CERN.CH@CERN.CH
+	renew until 11/11/2026 14:19:49
+11/06/2026 14:20:00  11/07/2026 15:20:00  afs/cern.ch@CERN.CH
+	renew until 11/11/2026 14:19:49
+11/06/2026 14:21:18  11/07/2026 15:20:00  xrootd/eoshome.cern.ch@CERN.CH
+	renew until 11/11/2026 14:19:49
+11/06/2026 14:22:10  11/07/2026 15:20:00  HTTP/batchkeeper1.cern.ch@
+	renew until 11/11/2026 14:19:49
+	Ticket server: HTTP/batchkeeper1.cern.ch@CERN.CH
+11/06/2026 14:22:10  11/07/2026 15:20:00  host/tweetybird04.cern.ch@
+	renew until 11/11/2026 14:19:49
+	Ticket server: host/tweetybird04.cern.ch@CERN.CH
+11/06/2026 14:22:10  11/07/2026 15:20:00  host/bigbird11.cern.ch@
+	renew until 11/11/2026 14:19:49
+	Ticket server: host/bigbird11.cern.ch@CERN.CH
+
+         ------------------------------------------------------------------------------
+         '          __  __                      __   __                               '
+         '         |  \/  | ___ _ __ __ _  ___  \ \ / /__  __ _ _ __ ___              '
+         '         | |\/| |/ _ \ '__/ _` |/ _ \  \ V / _ \/ _` | '__/ __|             '
+         '         | |  | |  __/ | | (_| |  __/   | |  __/ (_| | |  \__ \             '
+         '         |_|  |_|\___|_|  \__, |\___|   |_|\___|\__,_|_|  |___/             '
+         '                          |___/                                             '
+         '                                                                            '
+         ------------------------------------------------------------------------------
+         

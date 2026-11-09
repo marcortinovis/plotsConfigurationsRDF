@@ -1,0 +1,4 @@
+usage: mkMergeYears.py [-h] [--pycfg PYCFG] [--silentMode] [--cut CUT]
+                       [--output OUTPUT] [--submitBatch] [--checkBatch]
+                       [--hadd] [--batchDir BATCHDIR]
+mkMergeYears.py: error: unrecognized arguments: echo done at Fri Nov  6 02:23:20 PM CET 2026

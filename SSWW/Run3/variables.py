@@ -17,6 +17,9 @@ variables['events'] = {
     'fold' : 3
 }
 
+
+'''
+
 variables['njet'] = {
     'name' : 'Sum(CleanJet_pt > 30)',
     'range': (8, 0, 8),
@@ -158,6 +161,9 @@ variables['etaj2'] = {
     'fold' : 0
 }
 
+'''
+
+
 # ------------------------------------------------
 # VBS dijet system
 # ------------------------------------------------
@@ -202,6 +208,9 @@ variables['Rpt'] = {
     'xaxis': 'R_{pT}',
     'fold' : 2
 }
+
+
+'''
 
 # ------------------------------------------------
 # Lepton-jet variables (nonprompt discrimination)
@@ -307,3 +316,5 @@ variables['mllVSmjj'] = {
     'fold' : 3,
     'is2d' : 1
 }
+
+'''
