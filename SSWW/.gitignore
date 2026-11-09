@@ -1,0 +1,13 @@
+### mcortino
+
+# backup_configurations.py script
+*backup_configurations.py
+
+# parallel compiles
+*/parallel_compile/*
+
+# backup configurations
+*/configurations/*
+
+# jobs
+*jobsMerge/*
