@@ -2,7 +2,7 @@
 
 tag = 'SSWW'
 # tagger = 'SSWW_260923_test24'
-tagger = '261026_1030'
+tagger = '261122_1300'
 # tagger = '261014_vdebug3_24'
 
 # used by mkShape to define output directory for root files
@@ -45,10 +45,22 @@ outputDirDatacard = 'datacards/' + tagger
 scripts_run_folder    = "${MY_PATH_JOBS}/2024/"+tag+"_"+tagger+"/run_scripts"
 script_batch_location = "${MY_PATH_JOBS}/2024/"+tag+"_"+tagger+"/batch_scripts"
 
+snapshot_scripts_run_folder    = "${MY_PATH_JOBS}/2024/"+tag+"_"+tagger+"/snapshot_run_scripts"
+snapshot_script_batch_location = "${MY_PATH_JOBS}/2024/"+tag+"_"+tagger+"/snapshot_batch_scripts"
 
 
 jobs_config = {
     'haddBatch':
+        {
+            'jobFlavour': 'tomorrow',
+            'request_memory': '48128'
+        },
+    'submitBatch':
+        {
+            'jobFlavour': 'tomorrow',
+            'request_memory': '8192'
+        },
+    'parallelCompile':
         {
             'jobFlavour': 'tomorrow',
             'request_memory': '48128'

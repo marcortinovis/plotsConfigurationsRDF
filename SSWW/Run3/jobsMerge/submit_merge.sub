@@ -5,7 +5,7 @@ output                  = /afs/cern.ch/user/m/mcortino/private/ANALYSIS/plotsCon
 error                   = /afs/cern.ch/user/m/mcortino/private/ANALYSIS/plotsConfigurationsRDF/SSWW/Run3/jobsMerge/merge_$(cutname).err
 log                     = /afs/cern.ch/user/m/mcortino/private/ANALYSIS/plotsConfigurationsRDF/SSWW/Run3/jobsMerge/merge_$(cutname).log
 getenv                  = True
-transfer_input_files    = /afs/cern.ch/user/m/mcortino/private/ANALYSIS/plotsConfigurationsRDF/SSWW/Run3/jobsMerge/krb5cc_staged
+transfer_input_files    = /afs/cern.ch/user/m/mcortino/private/ANALYSIS/plotsConfigurationsRDF/SSWW/Run3/jobsMerge/x509up_staged, /afs/cern.ch/user/m/mcortino/private/ANALYSIS/plotsConfigurationsRDF/SSWW/Run3/jobsMerge/krb5cc_staged
 +JobFlavour             = "tomorrow"
 
 queue cutname in (

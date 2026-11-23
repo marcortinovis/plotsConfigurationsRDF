@@ -37,6 +37,7 @@ fakeDirectoryMuonEG = os.path.join(treeBaseDir, dataRecoMuonEG, fakeSteps)
 dataDirectoryMuonEG = os.path.join(treeBaseDir, dataRecoMuonEG, dataSteps)
 print(treeBaseDir)
 
+'''
 # merge cuts
 _mergedCuts = []
 for cut in list(cuts.keys()):
@@ -113,22 +114,24 @@ for js in jes_sources:
         'AsLnN': '0'
     }
 
+
 # #BUGGED FIXME TODO
-# '''
-# nuisances['MET'] = {
-#     'name': 'CMS_scale_met_2024',
-#     'skipCMS' : 1,
-#     'kind': 'suffix',
-#     'type': 'shape',
-#     'mapUp': 'unclustEnup',
-#     'mapDown': 'unclustEndo',
-#     #'separator': '__',
-#     'samples': dict((skey, ['1', '1']) for skey in mc),
-#     'folderUp': makeMCDirectory('unclustEnup_suffix'),
-#     'folderDown': makeMCDirectory('unclustEndo_suffix'),
-#     'AsLnN': '0'
-# }
-# '''
+
+nuisances['MET'] = {
+    'name': 'CMS_scale_met_2024',
+    'skipCMS' : 1,
+    'kind': 'suffix',
+    'type': 'shape',
+    'mapUp': 'unclustEnup',
+    'mapDown': 'unclustEndo',
+    #'separator': '__',
+    'samples': dict((skey, ['1', '1']) for skey in mc),
+    'folderUp': makeMCDirectory('unclustEnup_suffix'),
+    'folderDown': makeMCDirectory('unclustEndo_suffix'),
+    'AsLnN': '0'
+}
+
+
 
 ##### Lepton scale
 nuisances['lepscale'] = {
@@ -159,6 +162,7 @@ nuisances['lepres'] = {
     'folderDown': makeMCDirectory('leptonResolutiondo_suffix'),
     'AsLnN': '0'
 }
+'''
 
 # # ## B-tagger
 # # Fixed BTV SF variations
@@ -183,6 +187,27 @@ for flavour in ['bc', 'light']:
         }
 
 
+### NLO signal SF uncertainty
+nlosig_types = { ### should match the one in aliases.py
+    'WW': {'hist': 'hWW_KF_CMS', 'samples': ['WW_DPS', 'VBS_SSWW_WWCM_LL', 'VBS_SSWW_WWCM_TL', 'VBS_SSWW_WWCM_TT', 'WW_EWK', 'WW_Int', 'WW_QCD']},
+    'WZ': {'hist': 'hWZ_KF_CMS', 'samples': ['WZJJ_EWK', 'WZJJ_Int', 'WZJJ_QCD', 'WZSJJ_EWK', 'WZSJJ_QCD']},
+}
+
+for stype, cfg in nlosig_types.items():
+    nom  = f'NLOsignalSF{stype}'                      # matches the alias keys
+    syst = [f'{nom}Up/{nom}', f'{nom}Down/{nom}']
+    nuisances[f'NLOsignalSF{stype}'] = {
+        'name'    : f'CMS_NLOsignalSF{stype}',        # CMS_NLOsignalSFWW, CMS_NLOsignalSFWZ
+        'skipCMS' : 1,
+        'kind'    : 'weight',
+        'type'    : 'shape',
+        'samples' : dict((skey, syst) for skey in cfg['samples']),
+    }
+###
+
+
+
+'''
 # for source in nuisance_sources['bc']:
 #     btag_syst = [f'btagSFbc_up_{source}/btagSFbc', f'btagSFbc_down_{source}/btagSFbc']
 #     if source == 'statistic':
@@ -299,7 +324,7 @@ _qcdScaleGroups = {
     # polarised ones are its decomposition), so one correlated parameter.
     # the inclusive VBS_SSWW is commented out in samples.py (it double counts
     # WW_EWK + WW_QCD + WW_Int); add it back here if it is ever re-enabled.
-    'QCDscale_VBS_SSWW' : ['WW_EWK'], #'VBS_SSWW', 'VBS_SSWW_WWCM_LL', 'VBS_SSWW_WWCM_TL', 'VBS_SSWW_WWCM_TT'],
+    'QCDscale_VBS_SSWW' : ['WW_EWK', 'VBS_SSWW', 'VBS_SSWW_WWCM_LL', 'VBS_SSWW_WWCM_TL', 'VBS_SSWW_WWCM_TT'],
     'QCDscale_SSWW_QCD' : ['WW_QCD', 'WW_Int'],
 
     # --- WZ, split EWK / QCD exactly as groupPlot does in plot.py
@@ -475,7 +500,6 @@ nuisances['QCDscale_CRSR_accept_dytt']  = {
               }
 
 
-
 # nuisances['electronpt'] = {
 #     'name': 'scale_e_2017_UL',
 #     'kind': 'suffix',
@@ -513,3 +537,4 @@ nuisances['QCDscale_CRSR_accept_dytt']  = {
 #     #                        nominal          up               down
 #     'samples': dict((skey, ['SFweightMu','SFweightMuUp', 'SFweightMuDown']) for skey in mc) ### mcortino: mc was mcALL originally, but I think it gor renamed?
 # }
+'''

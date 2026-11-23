@@ -104,7 +104,7 @@ groupPlot['VBS SSWW'] = {
     'nameHR'  : 'VBS SSWW',
     'isSignal': 0,
     'color'   : rgb(*palette["CrimsonSig"]),
-    'samples' : ['WW_EWK'],
+    'samples' : ['VBS_SSWW_WWCM_LL', 'VBS_SSWW_WWCM_TL', 'VBS_SSWW_WWCM_TT'],
     'fill'    : 1001,
 }
 
@@ -127,7 +127,28 @@ groupPlot['QCD SSWW'] = {
 #     'scale'   : 1.0,
 # }
 
-plot['WW_EWK'] = {
+# plot['WW_EWK'] = {
+#     'color'   : rgb(*palette["Violet"]),
+#     'isSignal': 0,
+#     'isData'  : 0,
+#     'scale'   : 1.0,
+# }
+
+plot['VBS_SSWW_WWCM_LL'] = {
+    'color'   : rgb(*palette["Violet"]),
+    'isSignal': 0,
+    'isData'  : 0,
+    'scale'   : 1.0,
+}
+
+plot['VBS_SSWW_WWCM_TL'] = {
+    'color'   : rgb(*palette["Violet"]),
+    'isSignal': 0,
+    'isData'  : 0,
+    'scale'   : 1.0,
+}
+
+plot['VBS_SSWW_WWCM_TT'] = {
     'color'   : rgb(*palette["Violet"]),
     'isSignal': 0,
     'isData'  : 0,

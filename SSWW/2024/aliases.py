@@ -19,6 +19,7 @@ lhesamples = [skey for skey in mc if skey not in ('ggWW', 'ZZ', 'WW_DPS')]
 btagmaps = '/afs/cern.ch/user/m/mcortino/private/ANALYSIS/plotsConfigurationsRDF/SSWW/utils/data/btag'
 macros = '/afs/cern.ch/user/m/mcortino/private/ANALYSIS/plotsConfigurationsRDF/SSWW/utils/macros/'
 fakerates = '/afs/cern.ch/user/m/mcortino/private/ANALYSIS/plotsConfigurationsRDF/SSWW/utils/data/FakeRate'
+NLOsig_SFs = '/afs/cern.ch/user/m/mcortino/private/ANALYSIS/VV_NLO_LO_CMS_mjj.root'
 ###
 
 
@@ -465,11 +466,32 @@ aliases['LHEPdfWeight_vec']   = {'expr': 'ROOT::VecOps::RVec<double>(LHEPdfWeigh
 #   'samples': mcALL
 # }
 
-
 # see:
 # https://github.com/latinos/LatinoAnalysis/blob/master/NanoGardener/python/data/formulasToAdd_MC_2017.py
 #
 
+
+# ### mcortino: NLOsignalSF
+nlosig_path = NLOsig_SFs
+nlosig_shifts = ['', 'Up', 'Down']
+
+nlosig_types = {
+    'WW': {'hist': 'hWW_KF_CMS', 'samples': ['WW_DPS', 'VBS_SSWW_WWCM_LL', 'VBS_SSWW_WWCM_TL', 'VBS_SSWW_WWCM_TT', 'WW_EWK', 'WW_Int', 'WW_QCD']},
+    'WZ': {'hist': 'hWZ_KF_CMS', 'samples': ['WZJJ_EWK', 'WZJJ_Int', 'WZJJ_QCD', 'WZSJJ_EWK', 'WZSJJ_QCD']},
+}
+
+for stype, cfg in nlosig_types.items():
+    for shift in nlosig_shifts:
+        name = f'NLOsignalSF{stype}{shift}'
+        aliases[name] = {
+            'external'     : f'{macros}evaluate_NLOsignalSF.cc',
+            'linesToGlobal': [
+                f'NLOsignalSF {name}_inst("{nlosig_path}", "{cfg["hist"]}", "{shift}");'
+            ],
+            'function'     : f'{name}_inst',
+            'variables'    : ['(float)mjj'],
+            'samples'      : cfg['samples'],
+        }
 
 # variations
 # data/MC scale factors
@@ -478,7 +500,7 @@ aliases['LHEPdfWeight_vec']   = {'expr': 'ROOT::VecOps::RVec<double>(LHEPdfWeigh
 # Each factor switches on the same pinned size, so the product is the
 # single-multiplicity weight of whichever region the event belongs to.
 aliases['SFweight'] = {
-    'expr': ' * '.join(['SFweightNl', 'LepWPCutN', 'LepWPSFN', 'btagSFbc', 'btagSFlight']),
+    'expr': ' * '.join(['SFweightNl', 'LepWPCutN', 'LepWPSFN', 'btagSFbc', 'btagSFlight']), ### mcortino: should i add 'NLOsignalSF'?
     'samples': mc
 }
 

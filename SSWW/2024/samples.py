@@ -122,8 +122,8 @@ samples['DY'] = {
     'name': files,
     'weight': mcCommonWeight,
     'MaxEventsPerJob': 2000000,
-#    'splitParts': 10,
-#    'useParts'  : [0, 1, 2, 3],
+    'split': [40, 40, 20],
+    'era': 1,
 }
 
 
@@ -150,8 +150,8 @@ samples['top'] = {
     'name': files,
     'weight': mcCommonWeight,
     'MaxEventsPerJob': 2000000,
-#    'splitParts': 10,
-#    'useParts'  : [0, 1, 2, 3],
+    'split': [40, 40, 20],
+    'era': 1,
 }
 addSubSampleWeights (samples, 'top', 'TTTo2L2Nu', 'Top_pTrw')
 
@@ -175,8 +175,8 @@ samples['tVx'] = {
     'name': files,
     'weight': mcCommonWeight,
     'MaxEventsPerJob': 4000000,
-#    'splitParts': 10,
-#    'useParts'  : [0, 1, 2, 3],
+    'split': [40, 40, 20],
+    'era': 1,
 }
 
 ##########################################
@@ -207,8 +207,8 @@ samples['ggWW'] = {
     'name': files,
     'weight': mcCommonWeight,
     'MaxEventsPerJob': 2000000,
-#    'splitParts': 10,
-#    'useParts'  : [0, 1, 2, 3],
+    'split': [40, 40, 20],
+    'era': 1,
 }
 
 ##########
@@ -223,8 +223,8 @@ samples['WZJJ_EWK'] = {
     'name': files,
     'weight': mcCommonWeight + ' * (Gen_ZGstar_mass >= 50)',
     'MaxEventsPerJob': 4000000,
-#    'splitParts': 10,
-#    'useParts'  : [0, 1, 2, 3],
+    'split': [40, 40, 20],
+    'era': 1,
 }
 
 files = nanoGetSampleFiles(mcDirectory, 'WZTo3LNu')
@@ -233,8 +233,8 @@ samples['WZJJ_QCD'] = {
     'name': files,
     'weight': mcCommonWeight + ' * (Gen_ZGstar_mass >= 50)',
     'MaxEventsPerJob': 4000000,
-#    'splitParts': 10,
-#    'useParts'  : [0, 1, 2, 3],
+    'split': [40, 40, 20],
+    'era': 1,
 }
 
 files = nanoGetSampleFiles(mcDirectory, 'WZJJ_Interference')
@@ -243,8 +243,8 @@ samples['WZJJ_Int'] = {
     'name': files,
     'weight': mcCommonWeight + ' * (Gen_ZGstar_mass >= 50)',
     'MaxEventsPerJob': 4000000,
-#    'splitParts': 10,
-#    'useParts'  : [0, 1, 2, 3],
+    'split': [40, 40, 20],
+    'era': 1,
 }
 
 # ZZto2L2Nu-2Jets_QCD_TuneCP5_13p6TeV_madgraph-pythia8
@@ -268,8 +268,8 @@ samples['ZZ'] = {
     'name': files,
     'weight': mcCommonWeight,
     'MaxEventsPerJob': 4000000,
-#    'splitParts': 10,
-#    'useParts'  : [0, 1, 2, 3],
+    'split': [40, 40, 20],
+    'era': 1,
 }   
 
 # WW_DoubleScattering_TuneCP5_13p6TeV_pythia8
@@ -278,8 +278,8 @@ samples['WW_DPS'] = {
     'name': files,
     'weight': mcCommonWeight,
     'MaxEventsPerJob': 4000000,
-#    'splitParts': 10,
-#    'useParts'  : [0, 1, 2, 3],
+    'split': [40, 40, 20],
+    'era': 1,
 }    
 
 # ##################
@@ -313,8 +313,8 @@ samples['Zg'] = {
     'name': files,
     'weight': mcCommonWeightNoMatch + '*(Gen_ZGstar_mass <= 0)',
     'MaxEventsPerJob': 4000000,
-#    'splitParts': 10,
-#    'useParts'  : [0, 1, 2, 3],
+    'split': [40, 40, 20],
+    'era': 1,
 }
 
 # /WGtoLNuG-1Jets_TuneCP5_13p6TeV_amcatnloFXFX-pythia8
@@ -331,8 +331,8 @@ samples['Wg'] = {
     'name': files,
     'weight': mcCommonWeightNoMatch + '*(Gen_ZGstar_mass <= 0)',
     'MaxEventsPerJob': 4000000,
-#    'splitParts': 10,
-#    'useParts'  : [0, 1, 2, 3],
+    'split': [40, 40, 20],
+    'era': 1,
 }
 
 # DYGto2LG-1Jets_MLL-4to50_PTG-10to100_TuneCP5_13p6TeV_amcatnloFXFX-pythia8
@@ -361,8 +361,8 @@ samples['ZgS'] = {
     'name': files,
     'weight': mcCommonWeight,
     'MaxEventsPerJob': 4000000,
-#    'splitParts': 10,
-#    'useParts'  : [0, 1, 2, 3],
+    'split': [40, 40, 20],
+    'era': 1,
 }
 
 ### mcortino
@@ -392,8 +392,8 @@ samples['WgS'] = {
     'name': files,
     'weight': mcCommonWeight,
     'MaxEventsPerJob': 4000000,
-#    'splitParts': 10,
-#    'useParts'  : [0, 1, 2, 3],
+    'split': [40, 40, 20],
+    'era': 1,
 }
 
 ### mcortino
@@ -411,8 +411,8 @@ samples['WZSJJ_EWK'] = {
     'name': files,
     'weight': mcCommonWeight,
     'MaxEventsPerJob': 4000000,
-#    'splitParts': 10,
-#    'useParts'  : [0, 1, 2, 3],
+    'split': [40, 40, 20],
+    'era': 1,
 }
 
 addSubSampleWeights(samples, 'WZSJJ_EWK', "WZJJ_EWK", "(Gen_ZGstar_mass >= 4 && Gen_ZGstar_mass < 50)")    
@@ -425,8 +425,8 @@ samples['WZSJJ_QCD'] = {
     'name': files,
     'weight': mcCommonWeight,
     'MaxEventsPerJob': 4000000,
-#    'splitParts': 10,
-#    'useParts'  : [0, 1, 2, 3],
+    'split': [40, 40, 20],
+    'era': 1,
 }
 
 addSubSampleWeights(samples, 'WZSJJ_QCD', "WZTo3LNu", "(Gen_ZGstar_mass >= 4 && Gen_ZGstar_mass < 50)")    
@@ -450,8 +450,8 @@ samples['VVV'] = {
     'name': files,
     'weight': mcCommonWeight,
     'MaxEventsPerJob': 4000000,
-#    'splitParts': 10,
-#    'useParts'  : [0, 1, 2, 3],
+    'split': [40, 40, 20],
+    'era': 1,
 }
 
 ##################
@@ -464,8 +464,8 @@ samples['ggH_hww'] = {
     'name': files,
     'weight': mcCommonWeight,
     'MaxEventsPerJob': 4000000,
-#    'splitParts': 10,
-#    'useParts'  : [0, 1, 2, 3],
+    'split': [40, 40, 20],
+    'era': 1,
 }
 
 # VBFHto2Wto2L2Nu_Par-M-125_TuneCP5_13p6TeV_powheg-jhugen-pythia8
@@ -474,24 +474,23 @@ samples['qqH_hww'] = {
     'name': files,
     'weight': mcCommonWeight,
     'MaxEventsPerJob': 4000000,
-#    'splitParts': 10,
-#    'useParts'  : [0, 1, 2, 3],
+    'split': [40, 40, 20],
+    'era': 1,
 }
 
  ### mcortino file not found:nanoGetSampleFiles(mcDirectory, 'VH-HToNon2B') | \
         ### nanoGetSampleFiles(mcDirectory, 'GluGluHToZZTo4L_M125') | \ ### mcortino: not found
-        ####  | \ ### mcortino: creates issues with nuisances
+        ####  nanoGetSampleFiles(mcDirectory, 'VBFHToTauTau_M125') | \ ### mcortino: problems with ps weights, [1] array
 files = nanoGetSampleFiles(mcDirectory, 'ttHToNonbb_M125') | \
         nanoGetSampleFiles(mcDirectory, 'VBFHToZZTo4L_M125') | \
-        nanoGetSampleFiles(mcDirectory, 'VBFHToTauTau_M125') | \
         nanoGetSampleFiles(mcDirectory, 'GluGluHToTauTau_M125')
 
 samples['higgs'] = {
     'name': files,
     'weight': mcCommonWeight,
     'MaxEventsPerJob': 4000000,
-#    'splitParts': 10,
-#    'useParts'  : [0, 1, 2, 3],
+    'split': [40, 40, 20],
+    'era': 1,
 }
 
 # # OS WW
@@ -502,8 +501,8 @@ samples['OSWW'] = {
     'name': files,
     'weight': mcCommonWeight,
     'MaxEventsPerJob': 4000000,
-#    'splitParts': 10,
-#    'useParts'  : [0, 1, 2, 3],
+    'split': [40, 40, 20],
+    'era': 1,
 }
 
 
@@ -517,40 +516,40 @@ samples['OSWW'] = {
 #     'name': files,
 #     'weight': mcCommonWeight,
 #     'MaxEventsPerJob': 2000000,
-# #    'splitParts': 10,
-# #    'useParts'  : [0, 1, 2, 3],
+#     'split': [40, 40, 20],
+#     'era': 1,
 # }
 
 
-# # VBS-SSWW_PolarizationLL_TuneCP5_13p6TeV_madgraph-pythia8
-# files = nanoGetSampleFiles(mcDirectory, 'VBS_SSWW_WWCM_LL')
-# samples['VBS_SSWW_WWCM_LL'] = {
-#     'name': files,
-#     'weight': mcCommonWeight,
-#     'MaxEventsPerJob': 2000000,
-# #    'splitParts': 10,
-# #    'useParts'  : [0, 1, 2, 3],
-# }
+# VBS-SSWW_PolarizationLL_TuneCP5_13p6TeV_madgraph-pythia8
+files = nanoGetSampleFiles(mcDirectory, 'VBS_SSWW_WWCM_LL')
+samples['VBS_SSWW_WWCM_LL'] = {
+    'name': files,
+    'weight': mcCommonWeight,
+    'MaxEventsPerJob': 2000000,
+    'split': [40, 40, 20],
+    'era': 1,
+}
 
-# # VBS-SSWW_PolarizationTL_TuneCP5_13p6TeV_madgraph-pythia8
-# files = nanoGetSampleFiles(mcDirectory, 'VBS_SSWW_WWCM_TL')
-# samples['VBS_SSWW_WWCM_TL'] = {
-#     'name': files,
-#     'weight': mcCommonWeight,
-#     'MaxEventsPerJob': 2000000,
-# #    'splitParts': 10,
-# #    'useParts'  : [0, 1, 2, 3],
-# }
+# VBS-SSWW_PolarizationTL_TuneCP5_13p6TeV_madgraph-pythia8
+files = nanoGetSampleFiles(mcDirectory, 'VBS_SSWW_WWCM_TL')
+samples['VBS_SSWW_WWCM_TL'] = {
+    'name': files,
+    'weight': mcCommonWeight,
+    'MaxEventsPerJob': 2000000,
+    'split': [40, 40, 20],
+    'era': 1,
+}
 
-# # VBS-SSWW_PolarizationTT_TuneCP5_13p6TeV_madgraph-pythia8
-# files = nanoGetSampleFiles(mcDirectory, 'VBS_SSWW_WWCM_TT')
-# samples['VBS_SSWW_WWCM_TT'] = {
-#     'name': files,
-#     'weight': mcCommonWeight,
-#     'MaxEventsPerJob': 2000000,
-# #    'splitParts': 10,
-# #    'useParts'  : [0, 1, 2, 3],
-# }
+# VBS-SSWW_PolarizationTT_TuneCP5_13p6TeV_madgraph-pythia8
+files = nanoGetSampleFiles(mcDirectory, 'VBS_SSWW_WWCM_TT')
+samples['VBS_SSWW_WWCM_TT'] = {
+    'name': files,
+    'weight': mcCommonWeight,
+    'MaxEventsPerJob': 2000000,
+    'split': [40, 40, 20],
+    'era': 1,
+}
 
 # WWto2L2Nu-2Jets_SS_noTop_EW_TuneCP5_13p6TeV_madgraph-pythia8
 files = nanoGetSampleFiles(mcDirectory, 'WpWpJJ_EWK_noTop')
@@ -558,8 +557,8 @@ samples['WW_EWK'] = {
     'name': files,
     'weight': mcCommonWeight,
     'MaxEventsPerJob': 2000000,
-#    'splitParts': 10,
-#    'useParts'  : [0, 1, 2, 3],
+    'split': [40, 40, 20],
+    'era': 1,
 }
 
 # WWto2L2Nu-2Jets_SS_noTop_QCD_TuneCP5_13p6TeV_madgraph-pythia8
@@ -568,8 +567,8 @@ samples['WW_QCD'] = {
     'name': files,
     'weight': mcCommonWeight,
     'MaxEventsPerJob': 2000000,
-#    'splitParts': 10,
-#    'useParts'  : [0, 1, 2, 3],
+    'split': [40, 40, 20],
+    'era': 1,
 }
 
 # SSWWJJ_Interference_TuneCP5_13p6TeV_madgraph-pythia8
@@ -578,8 +577,8 @@ samples['WW_Int'] = {
     'name': files,
     'weight': mcCommonWeight,
     'MaxEventsPerJob': 2000000,
-#    'splitParts': 10,
-#    'useParts'  : [0, 1, 2, 3],
+    'split': [40, 40, 20],
+    'era': 1,
 }
 
 ###########
